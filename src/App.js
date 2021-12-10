@@ -17,14 +17,16 @@ function App() {
   return (
 
       <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-          <GlobalStyles>
+        <GlobalStyles/>
         <BrowserRouter>
+
           <Routes>
             <Route path="/" element={isLoggedIn ? <Home /> : <Login />}/>
             <Route path="*" element={<NotFound/>}/>
           </Routes>
+
         </BrowserRouter>
-          </GlobalStyles>
+
       </ThemeProvider>
 
   );
