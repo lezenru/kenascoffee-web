@@ -1,8 +1,12 @@
 import {createGlobalStyle} from "styled-components";
+import reset from "styled-reset";
 
 export const lightTheme = {
     fontColor: "black",
-    bgColor: "lightgray",
+    bgColor: "white",
+    accent: "#0095f6",
+    borderColor: "rgb(219, 219, 219)"
+
 
 };
 export const darkTheme = {
@@ -11,8 +15,20 @@ export const darkTheme = {
 };
 
 export const GlobalStyles = createGlobalStyle`
-  body{
-    color: ${props => props.theme.fontColor};
-    background-color: ${props => props.theme.bgColor};
+  ${reset}
+  input {
+    all:unset;
+  }
+  * {
+    box-sizing:border-box;
+  }
+  body {
+    background-color: ${(props) => props.theme.bgColor};
+    font-size:14px;
+    color: ${(props) => props.theme.fontColor};
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 `;
