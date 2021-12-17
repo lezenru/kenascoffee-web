@@ -1,9 +1,13 @@
-import {ApolloClient, HttpLink, InMemoryCache, makeVar} from "@apollo/client";
+import {ApolloClient, createHttpLink, HttpLink, InMemoryCache, makeVar} from "@apollo/client";
 import {setContext} from "@apollo/client/link/context";
 
 const TOKEN = "token";
 const DARK_MODE = "DARK_MODE";
-const HTTP_LINK = new HttpLink({ uri: 'http://localhost:4000/graphql' });
+const HTTP_LINK = createHttpLink({
+    uri: process.env.NODE_ENV === "production"
+        ? 'https://kenascoffeeshop.herokuapp.com/graphql'
+        : 'http://localhost:4000/graphql',
+});
 
 export const isLoggedInVar =
     makeVar(Boolean(localStorage.getItem(TOKEN)));
